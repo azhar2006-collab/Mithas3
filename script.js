@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const preloader = document.getElementById('preloader');
   if (preloader) {
     // Show preloader only once per tab/session
-    const PRELOADER_KEY = 'mithas_preloader_seen_v1';
+    const PRELOADER_KEY = 'mithas_preloader_seen_v2';
     const alreadySeen = sessionStorage.getItem(PRELOADER_KEY) === '1';
 
     const dismissPreloader = () => {
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.classList.add('preloader-active');
 
       // Let the rise + progress play, then slide away
-      const preloaderTimeout = setTimeout(dismissPreloader, 2600);
+      const preloaderTimeout = setTimeout(dismissPreloader, 2800);
 
       // Dismiss on click/tap
       preloader.addEventListener('click', () => {
@@ -270,51 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
     canvas.remove();
   }
 
-  /* ── 7. HERO PARALLAX (desktop home only) ── */
-  const heroSection = document.getElementById('home');
-  const heroImgFrame = document.querySelector('.page-home .hero-img-frame');
-  if (heroSection && heroImgFrame && !prefersReducedMotion && !isTouchDevice && !isMobileView) {
-    let parallaxTicking = false;
-    heroSection.addEventListener('mousemove', (e) => {
-      if (parallaxTicking) return;
-      parallaxTicking = true;
-      requestAnimationFrame(() => {
-        const xPercent = (e.clientX / window.innerWidth - 0.5) * 2;
-        const yPercent = (e.clientY / window.innerHeight - 0.5) * 2;
-        heroImgFrame.style.setProperty('--parallax-x', `${xPercent * 8}px`);
-        heroImgFrame.style.setProperty('--parallax-y', `${yPercent * 6}px`);
-        parallaxTicking = false;
-      });
-    }, { passive: true });
-  }
-
-  /* ── 8. HERO ORBITING HEXAGON DOTS ── */
-  const orbitRing = document.getElementById('orbitRing');
-  if (orbitRing && !isMobileView) {
-    const dotsCount = 5;
-    const radius = 185;
-    const dotColors = ['#30B5FF', '#E31E24', '#2E3192', '#00833E', '#FF5A5F', '#0073C2'];
-    for (let i = 0; i < dotsCount; i++) {
-      const angle = (i / dotsCount) * Math.PI * 2;
-      const dot = document.createElement('div');
-      const size = 7 + Math.random() * 6;
-      const color = dotColors[i % dotColors.length];
-      dot.className = 'orbit-dot';
-      dot.style.cssText = `
-        position: absolute;
-        width: ${size}px;
-        height: ${size}px;
-        left: calc(50% + ${Math.cos(angle) * radius}px - ${size / 2}px);
-        top: calc(50% + ${Math.sin(angle) * radius}px - ${size / 2}px);
-        background: ${color};
-        clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-        opacity: ${0.5 + Math.random() * 0.4};
-        box-shadow: 0 0 10px ${color};
-        animation-delay: ${i * 0.25}s;
-      `;
-      orbitRing.appendChild(dot);
-    }
-  }
+  /* ── 7–8. HERO effects disabled for performance ── */
 
   /* ── 9. FLAVOUR MIXER GAME LOGIC ── */
   const scoop = document.getElementById('icecreamScoop');
@@ -630,65 +586,6 @@ document.addEventListener('DOMContentLoaded', () => {
     reelPrev.addEventListener('click', () => {
       reelTrack.scrollBy({ left: -340, behavior: 'smooth' });
     });
-  }
-
-  /* ── 14. FLOATING ICE CRYSTALS (home desktop only, lightweight) ── */
-  if (!prefersReducedMotion && !isTouchDevice && !isMobileView && document.body.classList.contains('page-home')) {
-    const iceLayer = document.createElement('div');
-    iceLayer.className = 'ice-layer';
-    document.body.appendChild(iceLayer);
-
-    const crystalColors = ['ic-sky2', 'ic-sky3', 'ic-sky4', 'ic-white'];
-    const CRYSTAL_COUNT = 6;
-
-    for (let i = 0; i < CRYSTAL_COUNT; i++) {
-      const el = document.createElement('div');
-      const color = crystalColors[i % crystalColors.length];
-      const size = 8 + Math.random() * 12;
-      const dur = 18 + Math.random() * 14;
-      const delay = -(Math.random() * dur);
-      const left = 10 + Math.random() * 80;
-
-      el.className = `ice-crystal hex ${color}`;
-      el.style.cssText = `
-        width: ${size}px;
-        height: ${size}px;
-        left: ${left}vw;
-        bottom: -60px;
-        animation-duration: ${dur}s;
-        animation-delay: ${delay}s;
-        opacity: 0;
-      `;
-      iceLayer.appendChild(el);
-    }
-  }
-
-  /* ── HOME PAGE — light sparkles only ── */
-  if (document.body.classList.contains('page-home') && !prefersReducedMotion && !isMobileView) {
-    const heroSparkles = document.getElementById('heroSparkles');
-
-    if (heroSparkles) {
-      const sparkleColors = ['#30B5FF', '#7AD3FF', '#2E3192'];
-      for (let i = 0; i < 12; i++) {
-        const el = document.createElement('span');
-        el.className = 'sparkle';
-        const size = 2 + Math.random() * 4;
-        const dur = 2 + Math.random() * 3;
-        const delay = Math.random() * 4;
-        const color = sparkleColors[Math.floor(Math.random() * sparkleColors.length)];
-        el.style.cssText = `
-          width: ${size}px;
-          height: ${size}px;
-          left: ${Math.random() * 100}%;
-          top: ${Math.random() * 100}%;
-          background: ${color};
-          color: ${color};
-          animation-duration: ${dur}s;
-          animation-delay: ${delay}s;
-        `;
-        heroSparkles.appendChild(el);
-      }
-    }
   }
 
 });
