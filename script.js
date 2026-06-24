@@ -11,8 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ── 0. BRAND PRELOADER ── */
   const preloader = document.getElementById('preloader');
   if (preloader) {
-    const PRELOADER_KEY = 'mithas_preloader_seen_v3';
-    const showDuration = isMobileView || isTouchDevice ? 3000 : 2800;
+    const PRELOADER_KEY = 'mithas_preloader_seen_v4';
+    const isLitePreloader = isMobileView || isTouchDevice;
+    const showDuration = isLitePreloader ? 2200 : 2600;
     let dismissed = false;
     let dismissTimer = null;
 
@@ -29,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (dismissTimer) clearTimeout(dismissTimer);
       preloader.classList.add('loaded');
       document.body.classList.remove('preloader-active');
+      document.body.classList.add('page-ready');
       safeSessionSet(PRELOADER_KEY, '1');
     };
 
@@ -37,14 +39,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (alreadySeen) {
       preloader.classList.add('loaded');
       document.body.classList.remove('preloader-active');
+      document.body.classList.add('page-ready');
     } else {
       document.body.classList.add('preloader-active');
       preloader.classList.add('preloader--running');
 
       if (prefersReducedMotion) {
         preloader.classList.add('preloader--static');
-      } else if (isMobileView || isTouchDevice) {
-        preloader.classList.add('preloader--mobile');
+      } else if (isLitePreloader) {
+        preloader.classList.add('preloader--lite');
       }
 
       // Start dismiss timer immediately — do not wait on fonts.ready (can hang on mobile)
