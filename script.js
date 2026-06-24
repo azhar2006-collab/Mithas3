@@ -4,34 +4,53 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ── 0. ICE CREAM PRELOADER ── */
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isTouchDevice = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+  const isMobileView = window.matchMedia('(max-width: 768px)').matches;
+
+  /* ── 0. BRAND PRELOADER ── */
   const preloader = document.getElementById('preloader');
   if (preloader) {
-    // Show preloader only once per tab/session
-    const PRELOADER_KEY = 'mithas_preloader_seen_v2';
-    const alreadySeen = sessionStorage.getItem(PRELOADER_KEY) === '1';
+    const PRELOADER_KEY = 'mithas_preloader_seen_v3';
+    const showDuration = isMobileView || isTouchDevice ? 3000 : 2800;
+    let dismissed = false;
+    let dismissTimer = null;
 
-    const dismissPreloader = () => {
-      preloader.classList.add('loaded');
-      document.body.classList.remove('preloader-active');
-      sessionStorage.setItem(PRELOADER_KEY, '1');
+    const safeSessionGet = (key) => {
+      try { return sessionStorage.getItem(key); } catch { return null; }
+    };
+    const safeSessionSet = (key, value) => {
+      try { sessionStorage.setItem(key, value); } catch { /* private browsing */ }
     };
 
+    const dismissPreloader = () => {
+      if (dismissed) return;
+      dismissed = true;
+      if (dismissTimer) clearTimeout(dismissTimer);
+      preloader.classList.add('loaded');
+      document.body.classList.remove('preloader-active');
+      safeSessionSet(PRELOADER_KEY, '1');
+    };
+
+    const alreadySeen = safeSessionGet(PRELOADER_KEY) === '1';
+
     if (alreadySeen) {
-      // Skip animations and keep page interactive
       preloader.classList.add('loaded');
       document.body.classList.remove('preloader-active');
     } else {
       document.body.classList.add('preloader-active');
+      preloader.classList.add('preloader--running');
 
-      // Let the rise + progress play, then slide away
-      const preloaderTimeout = setTimeout(dismissPreloader, 2800);
+      if (prefersReducedMotion) {
+        preloader.classList.add('preloader--static');
+      } else if (isMobileView || isTouchDevice) {
+        preloader.classList.add('preloader--mobile');
+      }
 
-      // Dismiss on click/tap
-      preloader.addEventListener('click', () => {
-        clearTimeout(preloaderTimeout);
-        dismissPreloader();
-      });
+      // Start dismiss timer immediately — do not wait on fonts.ready (can hang on mobile)
+      dismissTimer = setTimeout(dismissPreloader, showDuration);
+
+      preloader.addEventListener('click', dismissPreloader, { once: true });
     }
   }
 
@@ -80,9 +99,11 @@ document.addEventListener('DOMContentLoaded', () => {
   onScroll();
 
   // Back to top click event
-  toTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+  if (toTop) {
+    toTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 
   /* ── 3. MOBILE NAVIGATION ── */
   const menuToggle = document.getElementById('menuToggle');
@@ -135,10 +156,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ── 4c. PRODUCT CARD TILT ON HOVER (desktop only) ── */
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const isTouchDevice = window.matchMedia('(hover: none), (pointer: coarse)').matches;
-  const isMobileView = window.matchMedia('(max-width: 768px)').matches;
-
   if (!prefersReducedMotion && !isTouchDevice) {
     const tiltSelector = document.body.classList.contains('page-home')
       ? '.cat-item'
@@ -189,8 +206,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ── 6. HONEY DRIP CURSOR PARTICLES (desktop only, pauses when idle) ── */
   const canvas = document.getElementById('drip-canvas');
-  if (canvas && !isTouchDevice && !prefersReducedMotion) {
+  const enableDripCanvas = canvas && !isTouchDevice && !isMobileView && !prefersReducedMotion;
+
+  if (enableDripCanvas) {
     const ctx = canvas.getContext('2d');
+    if (!ctx) {
+      canvas.remove();
+    } else {
     let cw = canvas.width = window.innerWidth;
     let ch = canvas.height = window.innerHeight;
     let particles = [];
@@ -229,18 +251,31 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!particles.length) return;
 
       ctx.clearRect(0, 0, cw, ch);
-      particles.forEach(p => {
+      const alive = [];
+
+      for (const p of particles) {
         p.y += p.vy;
         p.x += p.vx;
         p.life -= 0.022;
-        const alpha = Math.max(p.life, 0) * 0.55;
-        ctx.beginPath();
-        ctx.ellipse(p.x, p.y, p.r * p.life, p.r * p.life * p.elongation, 0, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${p.color}, ${alpha})`;
-        ctx.fill();
-      });
+        if (p.life <= 0.01) continue;
 
-      particles = particles.filter(p => p.life > 0);
+        const alpha = p.life * 0.55;
+        const rx = Math.max(p.r * p.life, 0.2);
+        const ry = Math.max(p.r * p.life * p.elongation, 0.2);
+
+        try {
+          ctx.beginPath();
+          ctx.ellipse(p.x, p.y, rx, ry, 0, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${p.color}, ${alpha})`;
+          ctx.fill();
+        } catch {
+          /* skip invalid draw frames */
+        }
+
+        alive.push(p);
+      }
+
+      particles = alive;
       if (particles.length) scheduleFrame();
     }
 
@@ -266,6 +301,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.clearRect(0, 0, cw, ch);
       }
     });
+    }
   } else if (canvas) {
     canvas.remove();
   }
@@ -438,7 +474,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Tab Filter for Accordion Categories
   tabButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-      document.querySelector('.tab-btn.active').classList.remove('active');
+      const currentActive = document.querySelector('.tab-btn.active');
+      if (currentActive) currentActive.classList.remove('active');
       btn.classList.add('active');
       filterAccordionCatalog();
     });
@@ -471,8 +508,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Item-level search filter
       catItems.forEach(item => {
-        const name = item.querySelector('.cat-item-name').textContent.toLowerCase();
-        const size = item.querySelector('.cat-item-size').textContent.toLowerCase();
+        const nameEl = item.querySelector('.cat-item-name');
+        const sizeEl = item.querySelector('.cat-item-size');
+        if (!nameEl || !sizeEl) return;
+
+        const name = nameEl.textContent.toLowerCase();
+        const size = sizeEl.textContent.toLowerCase();
         const badge = item.querySelector('.item-badge');
         const badgeText = badge ? badge.textContent.toLowerCase() : '';
 
@@ -529,8 +570,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   formTabBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      // Toggle Tab Active Classes
-      document.querySelector('.form-tab-btn.active').classList.remove('active');
+      const currentActive = document.querySelector('.form-tab-btn.active');
+      if (currentActive) currentActive.classList.remove('active');
       btn.classList.add('active');
 
       // Toggle Display Pane Active Classes
