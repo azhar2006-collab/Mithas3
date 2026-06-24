@@ -3556,12 +3556,49 @@ html {
 }
 .preloader-ring-progress {
   fill: none;
+  stroke: #30B5FF;
   stroke: url(#preloaderRingGrad);
   stroke-width: 3.5;
   stroke-linecap: round;
   stroke-dasharray: 339.292;
   stroke-dashoffset: 339.292;
   animation: preloader-ring-draw 2.4s cubic-bezier(0.4, 0, 0.2, 1) 0.35s forwards;
+}
+
+/* Reduced motion — show final state immediately */
+.preloader--static .preloader-inner,
+.preloader--static .preloader-logo,
+.preloader--static .preloader-tagline,
+.preloader--static .preloader-status {
+  opacity: 1;
+  transform: none;
+  animation: none !important;
+}
+.preloader--static .preloader-ring-progress {
+  stroke-dashoffset: 0;
+  animation: none;
+}
+.preloader--static .preloader-status-fill {
+  width: 100%;
+  animation: none;
+}
+
+/* Mobile / touch — keep content visible; animate ring + bar only */
+.preloader--mobile .preloader-inner,
+.preloader--mobile .preloader-logo,
+.preloader--mobile .preloader-tagline,
+.preloader--mobile .preloader-status {
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+.preloader--mobile .preloader-ring-progress {
+  stroke-dashoffset: 339.292;
+  animation: preloader-ring-draw 2.2s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
+}
+.preloader--mobile .preloader-status-fill {
+  width: 0%;
+  animation: preloader-status-fill 2.4s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
 }
 @keyframes preloader-ring-draw {
   to { stroke-dashoffset: 0; }
@@ -3653,11 +3690,33 @@ body.preloader-active {
   overflow: hidden;
 }
 
+@media (max-width: 768px), (hover: none) {
+  .preloader--running .preloader-inner,
+  .preloader--running .preloader-logo,
+  .preloader--running .preloader-tagline,
+  .preloader--running .preloader-status {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+  .preloader--running .preloader-ring-progress {
+    stroke-dashoffset: 339.292;
+    animation: preloader-ring-draw 2.2s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
+  }
+  .preloader--running .preloader-status-fill {
+    width: 0%;
+    animation: preloader-status-fill 2.4s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+  }
+}
+
 @media (max-width: 600px) {
   .preloader-card {
     padding: 32px 28px 28px;
     border-radius: 22px;
     min-width: min(92vw, 320px);
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
   .preloader-logo-wrap {
     width: 190px;
@@ -4052,15 +4111,8 @@ body.preloader-active {
   animation: none;
 }
 
-/* Disable all heavy hero decoration layers */
-.page-home .hero-aurora,
-.page-home .hero-mesh,
-.page-home .hero-beams,
-.page-home .hero-frost-mist,
-.page-home .hero-shimmer-sweep,
-.page-home .hero-sparkles,
+/* Disable heavy hero decoration layers (keep atmosphere + ice cream) */
 .page-home .hero-floaters,
-.page-home .hero-orb,
 .page-home .hex-ring,
 .page-home .hex-ring-inner,
 .page-home .hex-ring-pulse,
@@ -4078,6 +4130,23 @@ body.preloader-active {
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
+}
+.page-home .hero-mesh {
+  z-index: 0;
+}
+.page-home .hero-orb {
+  z-index: 0;
+}
+.page-home .hero-frost-mist,
+.page-home .hero-shimmer-sweep {
+  z-index: 0;
+}
+.page-home .hero-beams {
+  z-index: 0;
+  opacity: 0.7;
+}
+.page-home .hero-sparkles {
+  z-index: 1;
 }
 .page-home .aurora-layer {
   position: absolute;
@@ -4775,24 +4844,33 @@ body.preloader-active {
   .page-home .hero-img-frame {
     animation: none !important;
   }
-  .page-home .hero-fade-in,
-  .preloader-inner {
+  .page-home .hero-fade-in {
     opacity: 1;
     transform: none;
+  }
+  .preloader--running {
     animation: none;
   }
-  .preloader-logo,
-  .preloader-tagline,
-  .preloader-status,
-  .preloader-ring-progress,
-  .preloader-status-fill {
-    animation: none !important;
+  .preloader--running .preloader-inner,
+  .preloader--running .preloader-logo,
+  .preloader--running .preloader-tagline,
+  .preloader--running .preloader-status {
     opacity: 1 !important;
-    stroke-dashoffset: 0 !important;
-    width: 100% !important;
     transform: none !important;
+    animation: none !important;
   }
-  .preloader.loaded { opacity: 0; }
+  .preloader--running .preloader-ring-progress {
+    stroke-dashoffset: 0 !important;
+    animation: none !important;
+  }
+  .preloader--running .preloader-status-fill {
+    width: 100% !important;
+    animation: none !important;
+  }
+  .preloader.loaded {
+    opacity: 0;
+    visibility: hidden;
+  }
   .hero-ice-piece,
   .hero-ice-mist,
   .hero-ice-drip,
@@ -4815,6 +4893,26 @@ body.preloader-active {
   .ice-layer,
   .ice-emoji-layer {
     display: none !important;
+  }
+
+  .preloader-card {
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  .preloader-orb {
+    filter: blur(50px);
+    opacity: 0.4;
+  }
+
+  .page-home .hero-beams,
+  .page-home .hero-orb3,
+  .page-home .hero-orb4,
+  .page-home .hero-shimmer-sweep {
+    display: none !important;
+  }
+  .page-home .aurora-c {
+    display: none;
   }
 
   .page-home .hero-img-frame {
