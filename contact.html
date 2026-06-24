@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mithas — Our Story &amp; Inquiry Forms</title>
+  <meta name="description" content="Learn about Mithas Ice Cream's roots in Vellavedu, Chennai, our ISO standards, and contact us for bulk wedding booking and distributorship inquiries.">
+  
+  <!-- Preconnect Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- External CSS Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ======= ICE CREAM PRELOADER ======= -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-bg-glow" aria-hidden="true"></div>
+    <div class="preloader-inner">
+      <div class="preloader-glass">
+        <div class="preloader-cone">
+          <svg class="preloader-cone-svg" viewBox="0 0 120 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="60,195 15,65 105,65" fill="#D2A054" stroke="#9C6B28" stroke-width="2"/>
+            <path d="M25,80 L95,80 M32,95 L88,95 M39,110 L81,110 M46,125 L74,125 M50,140 L70,140 M54,155 L66,155 M57,170 L63,170 M18,70 L72,175 M102,70 L48,175" stroke="#B8863B" stroke-width="1.5" opacity="0.7"/>
+            <ellipse cx="60" cy="67" rx="44" ry="10" fill="#B28038"/>
+            <circle cx="60" cy="42" r="30" fill="#FCEAEC">
+              <animate attributeName="cy" values="120;42" dur="1.4s" fill="freeze" calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
+            </circle>
+            <circle cx="45" cy="25" r="20" fill="#E8F4FF">
+              <animate attributeName="cy" values="120;25" dur="1.4s" begin="0.12s" fill="freeze" calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
+            </circle>
+            <circle cx="75" cy="25" r="20" fill="#D6EEFF">
+              <animate attributeName="cy" values="120;25" dur="1.4s" begin="0.24s" fill="freeze" calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
+            </circle>
+            <circle cx="60" cy="10" r="18" fill="#FCE4EC">
+              <animate attributeName="cy" values="120;10" dur="1.4s" begin="0.36s" fill="freeze" calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
+            </circle>
+            <circle cx="60" cy="-5" r="7" fill="#E31E24">
+              <animate attributeName="cy" values="120;-5" dur="1.4s" begin="0.48s" fill="freeze" calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
+            </circle>
+            <path d="M60,-5 Q65,-20 58,-25" stroke="#00833E" stroke-width="2" fill="none" stroke-linecap="round">
+              <animate attributeName="d" values="M60,120 Q65,110 58,105;M60,-5 Q65,-20 58,-25" dur="1.4s" begin="0.48s" fill="freeze" calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
+            </path>
+          </svg>
+        </div>
+        <div class="preloader-text">
+          <span class="preloader-brand">Mithas</span>
+          <span class="preloader-tagline">True Milk. True Ice Cream.</span>
+        </div>
+      </div>
+    </div>
+    <div class="preloader-progress" aria-hidden="true">
+      <div class="preloader-progress-bar"></div>
+    </div>
+  </div>
+
+  <!-- Honey Drip SVG Gradients -->
+  <svg width="0" height="0" style="position:absolute;overflow:hidden;">
+    <defs>
+      <linearGradient id="wave-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#E8F7FF"/>
+        <stop offset="40%" stop-color="#30B5FF"/>
+        <stop offset="70%" stop-color="#2E3192"/>
+        <stop offset="100%" stop-color="#E8F7FF"/>
+      </linearGradient>
+      <linearGradient id="drip-grad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#30B5FF" stop-opacity="0.95"/>
+        <stop offset="50%" stop-color="#E31E24" stop-opacity="0.9"/>
+        <stop offset="100%" stop-color="#2E3192" stop-opacity="0.75"/>
+      </linearGradient>
+      <linearGradient id="hex-grad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#30B5FF"/>
+        <stop offset="100%" stop-color="#E31E24"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- Honey Drip Canvas Background Particle Effect -->
+  <canvas id="drip-canvas"></canvas>
+
+  <!-- Scroll Progress Indicator -->
+  <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
+
+  <!-- ======= HEADER & NAVIGATION ======= -->
+  <header id="siteHeader">
+    <a href="index.html" class="logo">
+      <img src="logo_mithas.png" alt="Mithas Ice Cream - True Milk, True Ice Cream" class="mithas-logo">
+      <span>
+        Mithas
+        <span class="tag">Fresh &amp; Healthy</span>
+      </span>
+    </a>
+    <nav>
+      <ul id="navList">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="contact.html" class="active-link">About<span class="nav-wide"> &amp; Reach Us</span></a></li>
+        <li><a href="#forms" class="nav-cta-mobile">Inquire</a></li>
+      </ul>
+    </nav>
+    <a href="#forms" class="nav-cta">Inquire Now</a>
+    <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+  </header>
+
+  <!-- ======= SUBPAGE HERO BANNER ======= -->
+  <section class="page-hero">
+    <div class="page-hero-comb"></div>
+    <div class="reveal">
+      <span class="eyebrow">Establishment</span>
+      <h1>Our Story &amp; Reach Us</h1>
+      <p>Redefining quality check processes from a small village of Chennai to your nearby parlor freezer counters.</p>
+    </div>
+  </section>
+
+  <!-- ======= ABOUT TIMELINE SECTION ======= -->
+  <section id="about" style="padding-top:40px; padding-bottom:80px;">
+    <div class="section-head reveal">
+      <span class="eyebrow">Timeline</span>
+      <h2>A Family Recipe, Scaled With Care</h2>
+      <p>Mithas started with one simple mission: Ice Cream is only as good as the milk inside. Read about our journey from a small farm plant to an ISO audited manufacturing plant.</p>
+    </div>
+
+    <!-- Company History Timeline -->
+    <div class="timeline reveal-stagger">
+      <!-- 1996 -->
+      <div class="timeline-item">
+        <div class="timeline-badge"></div>
+        <div class="timeline-content">
+          <span class="year">1996</span>
+          <h3>The Dairy Spark</h3>
+          <p>Mithas begins small operations in Vellavedu Village, starting with hand-cranked wooden tubs and raw honey fusions, focusing on purity.</p>
+        </div>
+      </div>
+
+      <!-- 2008 -->
+      <div class="timeline-item">
+        <div class="timeline-badge"></div>
+        <div class="timeline-content">
+          <span class="year">2008</span>
+          <h3>Audited Standards</h3>
+          <p>We expand and construct a modern dairy manufacturing plant, acquiring our official ISO 9001:2008 certification to guarantee hygienic processes.</p>
+        </div>
+      </div>
+
+      <!-- 2016 -->
+      <div class="timeline-item">
+        <div class="timeline-badge"></div>
+        <div class="timeline-content">
+          <span class="year">2016</span>
+          <h3>Expanding the Parlor</h3>
+          <p>Mithas scales up to offer 18 unique product lines, including traditional stick kulfi, cups, and chocobars, becoming a wedding caterer favorite.</p>
+        </div>
+      </div>
+
+      <!-- 2026 -->
+      <div class="timeline-item">
+        <div class="timeline-badge"></div>
+        <div class="timeline-content">
+          <span class="year">2026</span>
+          <h3>True Milk, True Ice Cream</h3>
+          <p>With thousands of happy customers across Tamil Nadu, Mithas remains dedicated to clean, fresh, and filler-free treats.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wave transition into contact forms -->
+  <div class="honey-wave">
+    <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,0 H1440 V18
+        C1400,18 1388,60 1355,60 C1322,60 1318,22 1285,22
+        C1252,22 1245,58 1212,58 C1179,58 1175,20 1142,20
+        C1109,20 1102,55 1069,55 C1036,55 1032,18 999,18
+        C966,18 960,52 927,52 C894,52 890,15 857,15
+        C824,15 818,50 785,50 C752,50 748,16 715,16
+        C682,16 676,54 643,54 C610,54 607,14 574,14
+        C541,14 535,48 502,48 C469,48 465,12 432,12
+        C399,12 393,46 360,46 C327,46 324,10 291,10
+        C258,10 252,44 219,44 C186,44 183,8 150,8
+        C117,8 111,42 78,42 C45,42 42,6 0,6 Z"
+        fill="var(--honey-pale)"/>
+    </svg>
+  </div>
+
+  <!-- ======= CONTACT CARDS & FORMS SECTION ======= -->
+  <section class="why-section" id="forms" style="padding-top:60px;">
+    
+    <!-- Contact Info Cards -->
+    <div class="contact-cards-grid reveal-stagger">
+      <!-- Address -->
+      <div class="contact-item-card">
+        <div class="c-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FEF3D0" stroke-width="2"><path d="M12 21s7-7.4 7-12a7 7 0 10-14 0c0 4.6 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+        <h3>Our Location</h3>
+        <p>SRI SAKTHI DAIRY FOODS<br>No. 13/1, N.S.R. Street, Vellavedu,<br>Chennai - 600 124, Tamil Nadu.</p>
+      </div>
+
+      <!-- Phone -->
+      <div class="contact-item-card">
+        <div class="c-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FEF3D0" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.8 19.8 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.69 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.33 1.85.56 2.81.69A2 2 0 0122 16.92z"/></svg></div>
+        <h3>Hotline Contacts</h3>
+        <p>Manager Quality Assurance<br><strong>+91-89256 22701</strong><br>(Mon - Sat, 9:00 AM - 6:00 PM)</p>
+      </div>
+
+      <!-- Email -->
+      <div class="contact-item-card">
+        <div class="c-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FEF3D0" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 5l8 7 8-7"/></svg></div>
+        <h3>Reach Us Online</h3>
+        <p>Email: <strong>info@mithas.net.in</strong><br>Website: <strong>www.mithas.net.in</strong><br>FSSAI Lic: <strong>12416023000184</strong></p>
+      </div>
+    </div>
+
+    <!-- Forms Container -->
+    <div class="form-section-container reveal">
+      
+      <!-- Tab switchers for form type -->
+      <div class="form-tabs">
+        <button class="form-tab-btn active" data-form-tab="paneBooking">Bulk Party Booking Form</button>
+        <button class="form-tab-btn" data-form-tab="panePartner">Distributorship Inquiry Form</button>
+      </div>
+
+      <!-- PANE 1: BULK PARTY BOOKING -->
+      <div class="form-pane active" id="paneBooking">
+        <form class="parlor-form" id="bookingForm">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="bName">Your Name</label>
+              <input type="text" id="bName" name="name" class="form-control" placeholder="Enter full name" required>
+            </div>
+            <div class="form-group">
+              <label for="bPhone">Phone Number</label>
+              <input type="tel" id="bPhone" name="phone" class="form-control" placeholder="e.g. +91 99887 76655" required>
+            </div>
+            <div class="form-group">
+              <label for="bDate">Event Date</label>
+              <input type="date" id="bDate" name="date" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="bType">Event Type</label>
+              <select id="bType" name="event_type" class="form-control" required>
+                <option value="">Select event type</option>
+                <option value="wedding">Wedding Reception</option>
+                <option value="birthday">Birthday Celebration</option>
+                <option value="corporate">Corporate Gala</option>
+                <option value="festival">Festival Catering</option>
+                <option value="other">Other Event</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="bGuests">Estimated Guests</label>
+              <input type="number" id="bGuests" name="guests" class="form-control" placeholder="e.g. 150" required>
+            </div>
+            <div class="form-group">
+              <label for="bFlavor">Preferred Flavours / Products</label>
+              <input type="text" id="bFlavor" name="flavor" class="form-control" placeholder="e.g. Matka Kulfi, Big Cones">
+            </div>
+            <div class="form-group full-width">
+              <label for="bMsg">Additional Catering Details</label>
+              <textarea id="bMsg" name="details" class="form-control" placeholder="Let us know your catering requests, delivery details, etc."></textarea>
+            </div>
+          </div>
+          <button type="submit" class="btn-submit">Submit Bulk Order Inquiry</button>
+        </form>
+      </div>
+
+      <!-- PANE 2: DISTRIBUTORSHIP INQUIRY -->
+      <div class="form-pane" id="panePartner">
+        <form class="parlor-form" id="partnerForm">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="pName">Applicant Name</label>
+              <input type="text" id="pName" name="name" class="form-control" placeholder="Enter applicant name" required>
+            </div>
+            <div class="form-group">
+              <label for="pPhone">Contact Number</label>
+              <input type="tel" id="pPhone" name="phone" class="form-control" placeholder="e.g. +91 99887 76655" required>
+            </div>
+            <div class="form-group">
+              <label for="pCity">City / Location</label>
+              <input type="text" id="pCity" name="city" class="form-control" placeholder="e.g. Chennai, Madurai" required>
+            </div>
+            <div class="form-group">
+              <label for="pArea">Target Distribution Area</label>
+              <input type="text" id="pArea" name="area" class="form-control" placeholder="e.g. South Chennai" required>
+            </div>
+            <div class="form-group full-width">
+              <label for="pBiz">Current Business Profile</label>
+              <input type="text" id="pBiz" name="business" class="form-control" placeholder="Describe your current trade or company profile" required>
+            </div>
+            <div class="form-group full-width">
+              <label for="pMsg">Inquiry Message / Experience</label>
+              <textarea id="pMsg" name="details" class="form-control" placeholder="Explain your sales network, cold storage capacities, etc."></textarea>
+            </div>
+          </div>
+          <button type="submit" class="btn-submit">Submit Distributorship Application</button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======= FOOTER & CONTACT SECTION ======= -->
+  <footer id="contact">
+    <div class="footer-grid">
+      <!-- About info column -->
+      <div>
+        <div class="footer-logo">
+          <svg width="38" height="38" viewBox="0 0 42 42">
+            <polygon points="21,2 39,11.5 39,30.5 21,40 3,30.5 3,11.5" fill="url(#hex-grad)" opacity="0.95"/>
+            <text x="21" y="27" text-anchor="middle" font-family="Playfair Display, serif" font-size="13" font-weight="700" fill="#FEF3D0">M</text>
+          </svg>
+          Mithas
+        </div>
+        <p class="desc">A certified manufacturer of premium ice cream, stick kulfi, and matka kulfi — made under ISO audits with hygienic local dairy in Tamil Nadu.</p>
+        
+        <div class="social-row">
+          <a href="#" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M14 9h3V6h-3c-2 0-3.5 1.5-3.5 3.5V12H8v3h2.5v6h3v-6H16l.5-3h-3V9.8c0-.5.2-.8.5-.8z" fill="rgba(249,228,170,0.8)"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" stroke="rgba(249,228,170,0.8)" stroke-width="1.6" fill="none"/><circle cx="12" cy="12" r="4" stroke="rgba(249,228,170,0.8)" stroke-width="1.6" fill="none"/><circle cx="17.2" cy="6.8" r="1.1" fill="rgba(249,228,170,0.8)"/></svg></a>
+          <a href="#" aria-label="WhatsApp"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 3a9 9 0 00-7.7 13.6L3 21l4.6-1.2A9 9 0 1012 3z" stroke="rgba(249,228,170,0.8)" stroke-width="1.6" fill="none"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Menu links -->
+      <div>
+        <h4>Menu Lines</h4>
+        <ul>
+          <li><a href="menu.html">Big Waffle Cone</a></li>
+          <li><a href="menu.html">Matka Pot Kulfi</a></li>
+          <li><a href="menu.html">Family Tubs</a></li>
+          <li><a href="menu.html">Candy Sticks</a></li>
+          <li><a href="menu.html">Brownie Ice Cream Cake</a></li>
+        </ul>
+      </div>
+
+      <!-- Company links -->
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">Our Story</a></li>
+          <li><a href="index.html#gallery">Parlor Gallery</a></li>
+          <li><a href="index.html#mixer">Flavour Mixer</a></li>
+          <li><a href="#forms">Distributorships</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+      <!-- Verified contact info column -->
+      <div>
+        <h4>Reach Us</h4>
+        <ul class="footer-contact">
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:2px;"><path d="M12 21s7-7.4 7-12a7 7 0 10-14 0c0 4.6 7 12 7 12z" stroke="var(--honey)" stroke-width="1.6" fill="none"/><circle cx="12" cy="9" r="2.4" stroke="var(--honey)" stroke-width="1.6" fill="none"/></svg>
+            <span>
+              <strong>Manufactured by:</strong><br>
+              SRI SAKTHI DAIRY FOODS<br>
+              No. 13/1, N.S.R. Street, Vellavedu,<br>
+              Chennai - 600 124, Tamil Nadu, India
+            </span>
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:2px;"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.8 19.8 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.69 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.33 1.85.56 2.81.69A2 2 0 0122 16.92z" stroke="var(--honey)" stroke-width="1.6" fill="none"/></svg>
+            +91-89256 22701
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:2px;"><path d="M4 4h16v16H4z" stroke="var(--honey)" stroke-width="1.6" fill="none"/><path d="M4 5l8 7 8-7" stroke="var(--honey)" stroke-width="1.6" fill="none"/></svg>
+            info@mithas.net.in
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom licensing and copyrights -->
+    <div class="footer-bottom">
+      <p>© 2026 Mithas. All Rights Reserved. &middot; FSSAI Lic. No. 12416023000184</p>
+      <div class="legal">
+        <a href="#">Terms of Service</a>
+        <a href="#">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast notification container (reused for submissions) -->
+  <div class="mixer-toast" id="creationToast">
+    <strong style="color: var(--honey-light); display: block; margin-bottom: 4px;">Submission Complete!</strong>
+    <span class="toast-msg">Custom scoop serving ready.</span>
+  </div>
+
+  <!-- Back to top button -->
+  <div class="to-top" id="toTop">
+    <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7" stroke="#FEF3D0" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+
+  <!-- External JS Script Link -->
+  <script src="script.js"></script>
+</body>
+</html>

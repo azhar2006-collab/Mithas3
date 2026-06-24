@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mithas — Parlor Menu &amp; Flavors Catalog</title>
+  <meta name="description" content="Explore the full Mithas Ice Cream menu. Large waffle cones, traditional stick and pot kulfi, family tubs, chocobars, and bulk packs. Search flavors.">
+  
+  <!-- Preconnect Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- External CSS Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ======= ICE CREAM PRELOADER ======= -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-bg-glow" aria-hidden="true"></div>
+    <div class="preloader-inner">
+      <div class="preloader-glass">
+        <div class="preloader-cone">
+          <svg class="preloader-cone-svg" viewBox="0 0 120 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="60,195 15,65 105,65" fill="#D2A054" stroke="#9C6B28" stroke-width="2"/>
+            <path d="M25,80 L95,80 M32,95 L88,95 M39,110 L81,110 M46,125 L74,125 M50,140 L70,140 M54,155 L66,155 M57,170 L63,170 M18,70 L72,175 M102,70 L48,175" stroke="#B8863B" stroke-width="1.5" opacity="0.7"/>
+            <ellipse cx="60" cy="67" rx="44" ry="10" fill="#B28038"/>
+            <circle cx="60" cy="42" r="30" fill="#FCEAEC">
+              <animate attributeName="cy" values="120;42" dur="1.4s" fill="freeze" calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
+            </circle>
+            <circle cx="45" cy="25" r="20" fill="#E8F4FF">
+              <animate attributeName="cy" values="120;25" dur="1.4s" begin="0.12s" fill="freeze" calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
+            </circle>
+            <circle cx="75" cy="25" r="20" fill="#D6EEFF">
+              <animate attributeName="cy" values="120;25" dur="1.4s" begin="0.24s" fill="freeze" calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
+            </circle>
+            <circle cx="60" cy="10" r="18" fill="#FCE4EC">
+              <animate attributeName="cy" values="120;10" dur="1.4s" begin="0.36s" fill="freeze" calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
+            </circle>
+            <circle cx="60" cy="-5" r="7" fill="#E31E24">
+              <animate attributeName="cy" values="120;-5" dur="1.4s" begin="0.48s" fill="freeze" calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
+            </circle>
+            <path d="M60,-5 Q65,-20 58,-25" stroke="#00833E" stroke-width="2" fill="none" stroke-linecap="round">
+              <animate attributeName="d" values="M60,120 Q65,110 58,105;M60,-5 Q65,-20 58,-25" dur="1.4s" begin="0.48s" fill="freeze" calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
+            </path>
+          </svg>
+        </div>
+        <div class="preloader-text">
+          <span class="preloader-brand">Mithas</span>
+          <span class="preloader-tagline">True Milk. True Ice Cream.</span>
+        </div>
+      </div>
+    </div>
+    <div class="preloader-progress" aria-hidden="true">
+      <div class="preloader-progress-bar"></div>
+    </div>
+  </div>
+
+  <!-- Honey Drip SVG Gradients -->
+  <svg width="0" height="0" style="position:absolute;overflow:hidden;">
+    <defs>
+      <linearGradient id="wave-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#E8F7FF"/>
+        <stop offset="40%" stop-color="#30B5FF"/>
+        <stop offset="70%" stop-color="#2E3192"/>
+        <stop offset="100%" stop-color="#E8F7FF"/>
+      </linearGradient>
+      <linearGradient id="drip-grad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#30B5FF" stop-opacity="0.95"/>
+        <stop offset="50%" stop-color="#E31E24" stop-opacity="0.9"/>
+        <stop offset="100%" stop-color="#2E3192" stop-opacity="0.75"/>
+      </linearGradient>
+      <linearGradient id="hex-grad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#30B5FF"/>
+        <stop offset="100%" stop-color="#E31E24"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- Honey Drip Canvas Background Particle Effect -->
+  <canvas id="drip-canvas"></canvas>
+
+  <!-- Scroll Progress Indicator -->
+  <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
+
+  <!-- ======= HEADER & NAVIGATION ======= -->
+  <header id="siteHeader">
+    <a href="index.html" class="logo">
+      <img src="logo_mithas.png" alt="Mithas Ice Cream - True Milk, True Ice Cream" class="mithas-logo">
+      <span>
+        Mithas
+        <span class="tag">Fresh &amp; Healthy</span>
+      </span>
+    </a>
+    <nav>
+      <ul id="navList">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html" class="active-link">Menu</a></li>
+        <li><a href="contact.html">About<span class="nav-wide"> &amp; Reach Us</span></a></li>
+        <li><a href="contact.html#contact" class="nav-cta-mobile">Store</a></li>
+      </ul>
+    </nav>
+    <a href="contact.html#contact" class="nav-cta">Find a Store</a>
+    <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+  </header>
+
+  <!-- ======= SUBPAGE HERO BANNER ======= -->
+  <section class="page-hero">
+    <div class="page-hero-comb"></div>
+    <div class="reveal">
+      <span class="eyebrow">Flavor Book</span>
+      <h1>Our Parlor Creations</h1>
+      <p>Search your favorite ingredients or browse categories to explore all eighteen Mithas milk recipes, kulfis, and party packs.</p>
+    </div>
+  </section>
+
+  <!-- ======= SEARCH CONTAINER ======= -->
+  <div class="search-container reveal">
+    <div class="search-box">
+      <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--honey-dark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input type="text" id="catalogSearch" class="search-input" placeholder="Search flavours... (e.g. Vanilla, Kesar Pista, Mango, Chocobar, Tub)">
+    </div>
+  </div>
+
+  <!-- ======= MENU / ACCORDION CATALOG ======= -->
+  <section class="products-catalog" style="padding-top:0;">
+
+    <!-- Quick category filter pills -->
+    <div class="catalog-tabs reveal" style="margin-bottom:40px;">
+      <button class="tab-btn active" data-filter="all">All Items</button>
+      <button class="tab-btn" data-filter="cones">Cones &amp; Cups</button>
+      <button class="tab-btn" data-filter="bars">Candy &amp; Chocobars</button>
+      <button class="tab-btn" data-filter="kulfi">Traditional Kulfi</button>
+      <button class="tab-btn" data-filter="tubs">Tubs &amp; Bulk Packs</button>
+      <button class="tab-btn" data-filter="cakes">Cakes &amp; Specialties</button>
+    </div>
+
+    <!-- ═══════ ACCORDION CATEGORY SECTIONS ═══════ -->
+    <div class="accordion-catalog reveal">
+
+      <!-- ─── CATEGORY: CONES & CUPS ─── -->
+      <div class="cat-section open" data-cat="cones">
+        <button class="cat-header" aria-expanded="true">
+          <span class="cat-title">
+            <span class="cat-icon">🍦</span>
+            Cones &amp; Cups
+            <span class="cat-count">(8)</span>
+          </span>
+          <span class="cat-chevron">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="cat-body">
+          <div class="cat-grid">
+
+            <div class="cat-item" data-category="cones">
+              <div class="cat-item-img">
+                <img src="img_cones.png" alt="Big Cone" loading="lazy">
+                <span class="item-badge">Bestseller</span>
+              </div>
+              <h4 class="cat-item-name">Big Cone</h4>
+              <span class="cat-item-size">100ml</span>
+            </div>
+
+            <div class="cat-item" data-category="cones">
+              <div class="cat-item-img">
+                <img src="img_choco_cone.png" alt="Mini Cone" loading="lazy">
+              </div>
+              <h4 class="cat-item-name">Mini Cone</h4>
+              <span class="cat-item-size">50ml</span>
+            </div>
+
+            <div class="cat-item" data-category="cones">
+              <div class="cat-item-img">
+                <img src="assets/official/official_party_cups.jpg" alt="Small Cup" loading="lazy">
+              </div>
+              <h4 class="cat-item-name">Small Cup</h4>
+              <span class="cat-item-size">40ml</span>
+            </div>
+
+            <div class="cat-item" data-category="cones">
+              <div class="cat-item-img">
+                <img src="assets/official/official_big_cups.jpg" alt="Big Cup" loading="lazy">
+              </div>
+              <h4 class="cat-item-name">Big Cup</h4>
+              <span class="cat-item-size">75ml</span>
+            </div>
+
+            <div class="cat-item" data-category="cones">
+              <div class="cat-item-img">
+                <img src="assets/official/official_large_cone.jpg" alt="Kesar Pista Cone" loading="lazy">
+              </div>
+              <h4 class="cat-item-name">Kesar Pista Cone</h4>
+              <span class="cat-item-size">100ml</span>
+            </div>
+
+            <div class="cat-item" data-category="cones">
+              <div class="cat-item-img">
+                <img src="assets/official/official_mini_cone.jpg" alt="Rajbhog Cone" loading="lazy">
+              </div>
+              <h4 class="cat-item-name">Rajbhog Cone</h4>
+              <span class="cat-item-size">100ml</span>
+            </div>
+
+            <div class="cat-item" data-category="cones">
+              <div class="cat-item-img">
+                <img src="img_butterscotch.png" alt="Butterscotch Cup" loading="lazy">
+              </div>
+              <h4 class="cat-item-name">Butterscotch Cup</h4>
+              <span class="cat-item-size">75ml</span>
+            </div>
+
+            <div class="cat-item" data-category="cones">
+              <div class="cat-item-img">
+                <img src="img_mango_scoop.png" alt="Mango Ripple Cup" loading="lazy">
+              </div>
+              <h4 class="cat-item-name">Mango Ripple Cup</h4>
+              <span class="cat-item-size">75ml</span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── CATEGORY: CANDY & CHOCOBARS ─── -->
+      <div class="cat-section" data-cat="bars">
+        <button class="cat-header" aria-expanded="false">
+          <span class="cat-title">
+            <span class="cat-icon">🍫</span>
+            Candy &amp; Chocobars
+            <span class="cat-count">(6)</span>
+          </span>
+          <span class="cat-chevron">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="cat-body">
+          <div class="cat-grid">
+
+            <div class="cat-item" data-category="bars">
+              <div class="cat-item-img">
+                <img src="img_popsicle.png" alt="Candy Stick" loading="lazy">
+                <span class="item-badge">Summer Hit</span>
+              </div>
+              <h4 class="cat-item-name">Candy Stick</h4>
+              <span class="cat-item-size">35ml</span>
+            </div>
+
+            <div class="cat-item" data-category="bars">
+              <div class="cat-item-img">
+                <img src="img_chocobar.png" alt="Premium Chocobar" loading="lazy">
+                <span class="item-badge">Premium</span>
+              </div>
+              <h4 class="cat-item-name">Premium Chocobar</h4>
+              <span class="cat-item-size">60ml</span>
+            </div>
+
+            <div class="cat-item" data-category="bars">
+              <div class="cat-item-img">
+                <img src="assets/official/official_bars.jpg" alt="Almond Crunch Bar" loading="lazy">
+              </div>
+              <h4 class="cat-item-name">Almond Crunch Bar</h4>
+              <span class="cat-item-size">60ml</span>
+            </div>
+
+            <div class="cat-item" data-category="bars">
+              <div class="cat-item-img">
+                <img src="assets/official/official_sandwich.jpg" alt="Nutty Choco" loading="lazy">
+              </div>
+              <h4 class="cat-item-name">Nutty Choco</h4>
+              <span class="cat-item-size">60ml</span>
+            </div>
+
+            <div class="cat-item" data-category="bars">
+              <div class="cat-item-img">
+                <img src="img_popsicle.png" alt="Watermelon Candy" loading="lazy">
+              </div>
+              <h4 class="cat-item-name">Watermelon Candy</h4>
+              <span class="cat-item-size">50ml</span>
+            </div>
+
+            <div class="cat-item" data-category="bars">
+              <div class="cat-item-img">
+                <img src="img_popsicle.png" alt="Orange Pop" loading="lazy">
+              </div>
+              <h4 class="cat-item-name">Orange Pop</h4>
+              <span class="cat-item-size">40ml</span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── CATEGORY: TRADITIONAL KULFI ─── -->
+      <div class="cat-section" data-cat="kulfi">
+        <button class="cat-header" aria-expanded="false">
+          <span class="cat-title">
+            <span class="cat-icon">🥣</span>
+            Traditional Kulfi
+            <span class="cat-count">(8)</span>
+          </span>
+          <span class="cat-chevron">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="cat-body">
+          <div class="cat-grid">
+
+            <div class="cat-item" data-category="kulfi">
+              <div class="cat-item-img">
+                <img src="img_kulfi.png" alt="Malai Kulfi" loading="lazy">
+                <span class="item-badge">Signature</span>
+              </div>
+              <h4 class="cat-item-name">Malai Kulfi</h4>
+              <span class="cat-item-size">50ml</span>
+            </div>
+
+            <div class="cat-item" data-category="kulfi">
+              <div class="cat-item-img">
+                <img src="assets/official/official_slice_kulfi.jpg" alt="Badam Kulfi" loading="lazy">
+              </div>
+              <h4 class="cat-item-name">Badam Kulfi</h4>
+              <span class="cat-item-size">50ml</span>
+            </div>
+
+            <div class="cat-item" data-category="kulfi">
+              <div class="cat-item-img">
+                <img src="img_kulfi.png" alt="Rose Kulfi" loading="lazy">
+              </div>
+              <h4 class="cat-item-name">Rose Kulfi</h4>
+              <span class="cat-item-size">50ml</span>
+            </div>
+
+            <div class="cat-item" data-category="kulfi">
+              <div class="cat-item-img">
+                <img src="assets/official/official_slice_kulfi.jpg" alt="Kaju Badam Kulfi" loading="lazy">
+              </div>
+              <h4 class="cat-item-name">Kaju Badam Kulfi</h4>
+              <span class="cat-item-size">50ml</span>
+            </div>
+
+            <div class="cat-item" data-category="kulfi">
+              <div class="cat-item-img">
+                <img src="img_matka_kulfi.png" alt="Matka Kulfi" loading="lazy">
+                <span class="item-badge">Clay Pot</span>
+              </div>
+              <h4 class="cat-item-name">Matka Kulfi</h4>
+              <span class="cat-item-size">65ml</span>
+            </div>
+
+            <div class="cat-item" data-category="kulfi">
+              <div class="cat-item-img">
+                <img src="assets/official/official_pot_kulfi.jpg" alt="Saffron Pot Kulfi" loading="lazy">
+              </div>
+              <h4 class="cat-item-name">Saffron Pot Kulfi</h4>
+              <span class="cat-item-size">100ml</span>
+            </div>
+
+            <div class="cat-item" data-category="kulfi">
+              <div class="cat-item-img">
+                <img src="img_kulfi.png" alt="Basundi Kulfi" loading="lazy">
+              </div>
+              <h4 class="cat-item-name">Basundi Kulfi</h4>
+              <span class="cat-item-size">50ml</span>
+            </div>
+
+            <div class="cat-item" data-category="kulfi">
+              <div class="cat-item-img">
+                <img src="assets/official/official_slice_kulfi.jpg" alt="Anjeer Kulfi" loading="lazy">
+              </div>
+              <h4 class="cat-item-name">Anjeer Kulfi</h4>
+              <span class="cat-item-size">50ml</span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── CATEGORY: TUBS & BULK PACKS ─── -->
+      <div class="cat-section" data-cat="tubs">
+        <button class="cat-header" aria-expanded="false">
+          <span class="cat-title">
+            <span class="cat-icon">🪣</span>
+            Tubs &amp; Bulk Packs
+            <span class="cat-count">(6)</span>
+          </span>
+          <span class="cat-chevron">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="cat-body">
+          <div class="cat-grid">
+
+            <div class="cat-item" data-category="tubs">
+              <div class="cat-item-img">
+                <img src="img_tub.png" alt="Family Tub" loading="lazy">
+                <span class="item-badge">Family</span>
+              </div>
+              <h4 class="cat-item-name">Family Tub</h4>
+              <span class="cat-item-size">750ml</span>
+            </div>
+
+            <div class="cat-item" data-category="tubs">
+              <div class="cat-item-img">
+                <img src="assets/official/official_family_tub.jpg" alt="Single Serve Tub" loading="lazy">
+              </div>
+              <h4 class="cat-item-name">Single Serve Tub</h4>
+              <span class="cat-item-size">100ml</span>
+            </div>
+
+            <div class="cat-item" data-category="tubs">
+              <div class="cat-item-img">
+                <img src="assets/official/official_bulk_pack.jpg" alt="Bulk Pack" loading="lazy">
+                <span class="item-badge">Party</span>
+              </div>
+              <h4 class="cat-item-name">Bulk Pack</h4>
+              <span class="cat-item-size">4 Litres</span>
+            </div>
+
+            <div class="cat-item" data-category="tubs">
+              <div class="cat-item-img">
+                <img src="img_tub.png" alt="Kesar Badam Tub" loading="lazy">
+              </div>
+              <h4 class="cat-item-name">Kesar Badam Tub</h4>
+              <span class="cat-item-size">750ml</span>
+            </div>
+
+            <div class="cat-item" data-category="tubs">
+              <div class="cat-item-img">
+                <img src="assets/official/official_family_tub.jpg" alt="Cookies and Cream Tub" loading="lazy">
+              </div>
+              <h4 class="cat-item-name">Cookies &amp; Cream Tub</h4>
+              <span class="cat-item-size">750ml</span>
+            </div>
+
+            <div class="cat-item" data-category="tubs">
+              <div class="cat-item-img">
+                <img src="img_tub.png" alt="Gulkand Tub" loading="lazy">
+              </div>
+              <h4 class="cat-item-name">Gulkand Tub</h4>
+              <span class="cat-item-size">100ml</span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── CATEGORY: CAKES & SPECIALTIES ─── -->
+      <div class="cat-section" data-cat="cakes">
+        <button class="cat-header" aria-expanded="false">
+          <span class="cat-title">
+            <span class="cat-icon">🎂</span>
+            Cakes &amp; Specialties
+            <span class="cat-count">(4)</span>
+          </span>
+          <span class="cat-chevron">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="cat-body">
+          <div class="cat-grid">
+
+            <div class="cat-item" data-category="cakes">
+              <div class="cat-item-img">
+                <img src="img_cake.png" alt="Brownie Ice Cream Cake" loading="lazy">
+                <span class="item-badge">Celebration</span>
+              </div>
+              <h4 class="cat-item-name">Brownie Ice Cream Cake</h4>
+              <span class="cat-item-size">500g</span>
+            </div>
+
+            <div class="cat-item" data-category="cakes">
+              <div class="cat-item-img">
+                <img src="assets/official/official_vanilla_ball.jpg" alt="Fun Ball" loading="lazy">
+              </div>
+              <h4 class="cat-item-name">Fun Ball</h4>
+              <span class="cat-item-size">100ml</span>
+            </div>
+
+            <div class="cat-item" data-category="cakes">
+              <div class="cat-item-img">
+                <img src="img_sundae.png" alt="Sundae Cup" loading="lazy">
+              </div>
+              <h4 class="cat-item-name">Sundae Cup</h4>
+              <span class="cat-item-size">150ml</span>
+            </div>
+
+            <div class="cat-item" data-category="cakes">
+              <div class="cat-item-img">
+                <img src="assets/official/official_cassata.jpg" alt="Cassata Slice" loading="lazy">
+              </div>
+              <h4 class="cat-item-name">Cassata Slice</h4>
+              <span class="cat-item-size">120ml</span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end .accordion-catalog -->
+  </section>
+
+  <!-- ======= FOOTER & CONTACT SECTION ======= -->
+  <footer id="contact">
+    <div class="footer-grid">
+      <!-- About info column -->
+      <div>
+        <div class="footer-logo">
+          <svg width="38" height="38" viewBox="0 0 42 42">
+            <polygon points="21,2 39,11.5 39,30.5 21,40 3,30.5 3,11.5" fill="url(#hex-grad)" opacity="0.95"/>
+            <text x="21" y="27" text-anchor="middle" font-family="Playfair Display, serif" font-size="13" font-weight="700" fill="#FEF3D0">M</text>
+          </svg>
+          Mithas
+        </div>
+        <p class="desc">A certified manufacturer of premium ice cream, stick kulfi, and matka kulfi — made under ISO audits with hygienic local dairy in Tamil Nadu.</p>
+        
+        <div class="social-row">
+          <a href="#" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M14 9h3V6h-3c-2 0-3.5 1.5-3.5 3.5V12H8v3h2.5v6h3v-6H16l.5-3h-3V9.8c0-.5.2-.8.5-.8z" fill="rgba(249,228,170,0.8)"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" stroke="rgba(249,228,170,0.8)" stroke-width="1.6" fill="none"/><circle cx="12" cy="12" r="4" stroke="rgba(249,228,170,0.8)" stroke-width="1.6" fill="none"/><circle cx="17.2" cy="6.8" r="1.1" fill="rgba(249,228,170,0.8)"/></svg></a>
+          <a href="#" aria-label="WhatsApp"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 3a9 9 0 00-7.7 13.6L3 21l4.6-1.2A9 9 0 1012 3z" stroke="rgba(249,228,170,0.8)" stroke-width="1.6" fill="none"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Menu links -->
+      <div>
+        <h4>Menu Lines</h4>
+        <ul>
+          <li><a href="menu.html">Big Waffle Cone</a></li>
+          <li><a href="menu.html">Matka Pot Kulfi</a></li>
+          <li><a href="menu.html">Family Tubs</a></li>
+          <li><a href="menu.html">Candy Sticks</a></li>
+          <li><a href="menu.html">Brownie Ice Cream Cake</a></li>
+        </ul>
+      </div>
+
+      <!-- Company links -->
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="contact.html#about">Our Story</a></li>
+          <li><a href="index.html#gallery">Parlor Gallery</a></li>
+          <li><a href="index.html#mixer">Flavour Mixer</a></li>
+          <li><a href="contact.html#forms">Distributorships</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+      <!-- Verified contact info column -->
+      <div>
+        <h4>Reach Us</h4>
+        <ul class="footer-contact">
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:2px;"><path d="M12 21s7-7.4 7-12a7 7 0 10-14 0c0 4.6 7 12 7 12z" stroke="var(--honey)" stroke-width="1.6" fill="none"/><circle cx="12" cy="9" r="2.4" stroke="var(--honey)" stroke-width="1.6" fill="none"/></svg>
+            <span>
+              <strong>Manufactured by:</strong><br>
+              SRI SAKTHI DAIRY FOODS<br>
+              No. 13/1, N.S.R. Street, Vellavedu,<br>
+              Chennai - 600 124, Tamil Nadu, India
+            </span>
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:2px;"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.8 19.8 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.69 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.33 1.85.56 2.81.69A2 2 0 0122 16.92z" stroke="var(--honey)" stroke-width="1.6" fill="none"/></svg>
+            +91-89256 22701
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:2px;"><path d="M4 4h16v16H4z" stroke="var(--honey)" stroke-width="1.6" fill="none"/><path d="M4 5l8 7 8-7" stroke="var(--honey)" stroke-width="1.6" fill="none"/></svg>
+            info@mithas.net.in
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom licensing and copyrights -->
+    <div class="footer-bottom">
+      <p>© 2026 Mithas. All Rights Reserved. &middot; FSSAI Lic. No. 12416023000184</p>
+      <div class="legal">
+        <a href="#">Terms of Service</a>
+        <a href="#">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast notification container -->
+  <div class="mixer-toast" id="creationToast">
+    <strong style="color: var(--honey-light); display: block; margin-bottom: 4px;">Scoop Complete!</strong>
+    <span class="toast-msg">Custom scoop serving ready.</span>
+  </div>
+
+  <!-- Back to top button -->
+  <div class="to-top" id="toTop">
+    <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7" stroke="#FEF3D0" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+
+  <!-- External JS Script Link -->
+  <script src="script.js"></script>
+</body>
+</html>

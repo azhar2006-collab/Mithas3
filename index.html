@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mithas — True Milk, True Ice Cream (Home)</title>
+  <meta name="description" content="ISO 9001:2008 Certified manufacturer of fresh, healthy ice creams, stick kulfi, and pot kulfi. Made with 100% fresh milk in Vellavedu, Chennai.">
+  
+  <!-- Preconnect Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- External CSS Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-home">
+
+  <!-- ======= ICE CREAM PRELOADER ======= -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-bg-glow" aria-hidden="true"></div>
+    <div class="preloader-inner">
+      <div class="preloader-glass">
+        <div class="preloader-cone">
+          <svg class="preloader-cone-svg" viewBox="0 0 120 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="60,195 15,65 105,65" fill="#D2A054" stroke="#9C6B28" stroke-width="2"/>
+            <path d="M25,80 L95,80 M32,95 L88,95 M39,110 L81,110 M46,125 L74,125 M50,140 L70,140 M54,155 L66,155 M57,170 L63,170 M18,70 L72,175 M102,70 L48,175" stroke="#B8863B" stroke-width="1.5" opacity="0.7"/>
+            <ellipse cx="60" cy="67" rx="44" ry="10" fill="#B28038"/>
+            <circle cx="60" cy="42" r="30" fill="#FCEAEC">
+              <animate attributeName="cy" values="120;42" dur="1.4s" fill="freeze" calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
+            </circle>
+            <circle cx="45" cy="25" r="20" fill="#E8F4FF">
+              <animate attributeName="cy" values="120;25" dur="1.4s" begin="0.12s" fill="freeze" calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
+            </circle>
+            <circle cx="75" cy="25" r="20" fill="#D6EEFF">
+              <animate attributeName="cy" values="120;25" dur="1.4s" begin="0.24s" fill="freeze" calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
+            </circle>
+            <circle cx="60" cy="10" r="18" fill="#FCE4EC">
+              <animate attributeName="cy" values="120;10" dur="1.4s" begin="0.36s" fill="freeze" calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
+            </circle>
+            <circle cx="60" cy="-5" r="7" fill="#E31E24">
+              <animate attributeName="cy" values="120;-5" dur="1.4s" begin="0.48s" fill="freeze" calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
+            </circle>
+            <path d="M60,-5 Q65,-20 58,-25" stroke="#00833E" stroke-width="2" fill="none" stroke-linecap="round">
+              <animate attributeName="d" values="M60,120 Q65,110 58,105;M60,-5 Q65,-20 58,-25" dur="1.4s" begin="0.48s" fill="freeze" calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
+            </path>
+          </svg>
+        </div>
+        <div class="preloader-text">
+          <span class="preloader-brand">Mithas</span>
+          <span class="preloader-tagline">True Milk. True Ice Cream.</span>
+        </div>
+      </div>
+    </div>
+    <div class="preloader-progress" aria-hidden="true">
+      <div class="preloader-progress-bar"></div>
+    </div>
+  </div>
+
+  <!-- Honey Drip SVG Gradients -->
+  <svg width="0" height="0" style="position:absolute;overflow:hidden;">
+    <defs>
+      <linearGradient id="wave-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#E8F7FF"/>
+        <stop offset="40%" stop-color="#30B5FF"/>
+        <stop offset="70%" stop-color="#2E3192"/>
+        <stop offset="100%" stop-color="#E8F7FF"/>
+      </linearGradient>
+      <linearGradient id="drip-grad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#30B5FF" stop-opacity="0.95"/>
+        <stop offset="50%" stop-color="#E31E24" stop-opacity="0.9"/>
+        <stop offset="100%" stop-color="#2E3192" stop-opacity="0.75"/>
+      </linearGradient>
+      <linearGradient id="hex-grad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#30B5FF"/>
+        <stop offset="100%" stop-color="#E31E24"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- Honey Drip Canvas Background Particle Effect -->
+  <canvas id="drip-canvas"></canvas>
+
+  <!-- Scroll Progress Indicator -->
+  <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
+
+  <!-- ======= HEADER & NAVIGATION ======= -->
+  <header id="siteHeader">
+    <a href="index.html" class="logo">
+      <img src="logo_mithas.png" alt="Mithas Ice Cream - True Milk, True Ice Cream" class="mithas-logo">
+      <span>
+        Mithas
+        <span class="tag">Fresh &amp; Healthy</span>
+      </span>
+    </a>
+    <nav>
+      <ul id="navList">
+        <li><a href="index.html" class="active-link">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="contact.html">About<span class="nav-wide"> &amp; Reach Us</span></a></li>
+        <li><a href="contact.html#contact" class="nav-cta-mobile">Store</a></li>
+      </ul>
+    </nav>
+    <a href="contact.html#contact" class="nav-cta">Find a Store</a>
+    <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+  </header>
+
+  
+  <!-- ======= HERO SECTION ======= -->
+  <section class="hero" id="home">
+    <div class="hero-aurora" aria-hidden="true">
+      <div class="aurora-layer aurora-a"></div>
+      <div class="aurora-layer aurora-b"></div>
+    </div>
+    <div class="hero-mesh" aria-hidden="true"></div>
+    <div class="hero-comb-bg"></div>
+    <div class="hero-beams" aria-hidden="true">
+      <span class="hero-beam hero-beam-2"></span>
+    </div>
+    <div class="hero-orb hero-orb1"></div>
+    <div class="hero-orb hero-orb2"></div>
+    <div class="hero-frost-mist" aria-hidden="true"></div>
+    <div class="hero-sparkles" id="heroSparkles" aria-hidden="true"></div>
+
+    <div class="hero-grid">
+      <!-- Text Description Side -->
+      <div class="hero-content">
+        <div class="hero-eyebrow hero-fade-in" style="animation-delay:0.1s">
+          <span class="dot"></span>
+          <span class="eyebrow">ISO 9001:2008 Certified Unit &middot; Chennai</span>
+        </div>
+        <h1 class="hero-fade-in" style="animation-delay:0.25s">
+          True Milk.<br>
+          <em class="gradient-text-animated">True Ice Cream.<span class="ink-line"></span></em><br>
+          <span class="hero-headline-accent">Made Slowly, Loved Fast.</span>
+        </h1>
+        <p class="lede hero-fade-in" style="animation-delay:0.45s">From traditional stick kulfi to 4-Litre bulk packs, Mithas starts with fresh local dairy and raw honey sweetness. Zero added fillers, 100% authentic flavor.</p>
+        <div class="hero-flavor-chips hero-fade-in" style="animation-delay:0.55s" aria-hidden="true">
+          <span class="flavor-chip chip-red">Kulfi</span>
+          <span class="flavor-chip chip-blue">Cones</span>
+          <span class="flavor-chip chip-green">Matka</span>
+          <span class="flavor-chip chip-sky">Tubs</span>
+        </div>
+        <div class="hero-actions hero-fade-in" style="animation-delay:0.65s">
+          <a href="menu.html" class="btn-primary btn-hero-glow">
+            Explore Parlor Menu
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#mixer" class="btn-ghost">
+            <span class="play-ring play-ring-pulse">
+              <svg width="14" height="14" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#2E3192"/></svg>
+            </span>
+            Mix a Flavour
+          </a>
+        </div>
+        <div class="hero-stats hero-fade-in" style="animation-delay:0.8s">
+          <div class="stat-pill stat-pill-glow">
+            <span class="num stat-color-1"><span class="counter" data-target="30">0</span>+</span>
+            <span class="lbl">Years of Craft</span>
+          </div>
+          <div class="stat-pill stat-pill-glow">
+            <span class="num stat-color-2"><span class="counter" data-target="18">0</span></span>
+            <span class="lbl">Product Lines</span>
+          </div>
+          <div class="stat-pill stat-pill-glow">
+            <span class="num stat-color-3"><span class="counter" data-target="100">0</span>%</span>
+            <span class="lbl">Fresh Milk</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visual Orbiting Side -->
+      <div class="hero-visual hero-fade-in" style="animation-delay:0.5s">
+        <div class="hex-ring"></div>
+        <div class="hex-ring-inner"></div>
+        <div class="hex-ring-pulse" aria-hidden="true"></div>
+        <div class="hero-glow"></div>
+        <div class="hero-visual-mist" aria-hidden="true"></div>
+
+        <!-- Orbiting honeycomb shapes -->
+        <div id="orbitRing" class="orbit-ring"></div>
+
+        <!-- Floating Badges -->
+        <div class="float-badge badge-iso">
+          <span class="b-ico">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          ISO 9001:2008 Certified
+        </div>
+        <div class="float-badge badge-milk">
+          <span class="b-ico">
+            <svg width="14" height="14" viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" fill="#FFFFFF"/></svg>
+          </span>
+          Fresh Dairy Sourced
+        </div>
+        <div class="float-badge badge-natural">
+          <span class="b-ico b-ico-green">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 3C8 8 4 10 4 14a8 8 0 1016 0c0-4-4-6-8-11z" fill="#FFFFFF" opacity="0.9"/></svg>
+          </span>
+          100% Natural
+        </div>
+
+        <!-- Hero Cone Image -->
+        <div class="hero-img-frame">
+          <div class="hero-img-ring" aria-hidden="true"></div>
+          <div class="hero-img-shine" aria-hidden="true"></div>
+          <img
+            src="img_hero_cone.png"
+            alt="Mithas Saffron Honey Scoop"
+            loading="eager"
+          />
+        </div>
+
+        <!-- Honey Drips falling from under the image -->
+        <div class="honey-drip" style="left:calc(50% - 54px);">
+          <svg width="40" height="70" viewBox="0 0 40 70">
+            <path class="drip-path" d="M14,0 Q12,30 8,45 Q6,55 10,62 Q14,70 20,70 Q26,70 30,62 Q34,55 32,45 Q28,30 26,0 Z" style="animation-delay:0.3s"/>
+          </svg>
+        </div>
+        <div class="honey-drip" style="left:calc(50% + 30px);">
+          <svg width="24" height="52" viewBox="0 0 24 52">
+            <path class="drip-path" d="M8,0 Q7,20 5,30 Q3,38 6,44 Q9,52 12,52 Q15,52 18,44 Q21,38 19,30 Q17,20 16,0 Z" style="animation-delay:1.8s;animation-duration:3.8s"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll cue drip -->
+    <div class="scroll-cue">
+      <span>Scroll</span>
+      <div class="s-line"><span class="s-drop"></span></div>
+    </div>
+  </section>
+
+  <!-- Honey Drip Wave Divider -->
+  <div class="honey-wave">
+    <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,0 H1440 V18
+        C1400,18 1388,60 1355,60 C1322,60 1318,22 1285,22
+        C1252,22 1245,58 1212,58 C1179,58 1175,20 1142,20
+        C1109,20 1102,55 1069,55 C1036,55 1032,18 999,18
+        C966,18 960,52 927,52 C894,52 890,15 857,15
+        C824,15 818,50 785,50 C752,50 748,16 715,16
+        C682,16 676,54 643,54 C610,54 607,14 574,14
+        C541,14 535,48 502,48 C469,48 465,12 432,12
+        C399,12 393,46 360,46 C327,46 324,10 291,10
+        C258,10 252,44 219,44 C186,44 183,8 150,8
+        C117,8 111,42 78,42 C45,42 42,6 0,6 Z"
+        fill="url(#wave-grad)"/>
+    </svg>
+  </div>
+
+
+  <!-- ======= FLAVOUR MIXER SECTION (NEW INTERACTIVE APP) ======= -->
+  <section class="flavour-mixer-section ice-shimmer" id="mixer">
+    <div class="section-head reveal">
+      <span class="eyebrow">Mix Your Scoop</span>
+      <h2>Mithas Interactive Flavour Mixer</h2>
+      <p>Select your favorite ice cream base, toggle crunchy toppings, and hit Drizzle to coat your custom waffle scoop in warm golden honey or fudge syrup!</p>
+    </div>
+
+    <div class="mixer-container reveal">
+      <!-- Left side: Visual representation -->
+      <div class="mixer-visual-card">
+        <div class="scoop-stage">
+          <!-- Syrup stream animation -->
+          <div class="syrup-stream" id="syrupStream"></div>
+          
+          <!-- Wrapper to animate scoop, syrup and toppings together -->
+          <div class="scoop-wrapper" id="scoopWrapper">
+            <!-- Ice cream scoop container -->
+            <div class="icecream-scoop-display scoop-flavour-vanilla" id="icecreamScoop">
+              <!-- Details loaded dynamically -->
+            </div>
+
+            <!-- Syrup drizzle coating layer -->
+            <div class="syrup-layer-scoop" id="syrupLayer"></div>
+
+            <!-- Toppings overlay layer -->
+            <div class="topping-container-display" id="toppingsDisplay"></div>
+          </div>
+
+          <!-- Cone vector -->
+          <svg class="waffle-cone-svg" viewBox="0 0 100 150">
+            <polygon points="50,150 10,10 90,10" fill="#D2A054" stroke="#9C6B28" stroke-width="2"/>
+            <path d="M20,30 L80,30 M30,50 L70,50 M40,70 L60,70 M45,90 L55,90 M48,110 L52,110 M12,15 L60,135 M88,15 L40,135" stroke="#B8863B" stroke-width="1.5"/>
+            <ellipse cx="50" cy="12" rx="38" ry="8" fill="#B28038"/>
+          </svg>
+        </div>
+
+        <!-- Custom creation message -->
+        <div class="creation-toast" id="creationToast">
+          <span class="toast-msg">Scoop Assembled!</span>
+        </div>
+      </div>
+
+      <!-- Right side: Selection controls -->
+      <div class="mixer-controls">
+        <div class="mixer-step">
+          <h3>Step 1: Choose Base Scoop</h3>
+          <div class="mixer-options">
+            <div class="mixer-opt active" data-base="vanilla">Pure Vanilla</div>
+            <div class="mixer-opt" data-base="chocolate">Rich Chocolate</div>
+            <div class="mixer-opt" data-base="kesarpista">Kesar Pista</div>
+            <div class="mixer-opt" data-base="mango">Mango Ripple</div>
+          </div>
+        </div>
+
+        <div class="mixer-step">
+          <h3>Step 2: Select Syrup Sauce</h3>
+          <div class="mixer-options">
+            <div class="mixer-opt active" data-syrup="honey">Raw Honey</div>
+            <div class="mixer-opt" data-syrup="caramel">Caramel Fudge</div>
+            <div class="mixer-opt" data-syrup="chocolate">Rich Choco</div>
+            <div class="mixer-opt" data-syrup="none" style="opacity: 0.5;">No Syrup</div>
+          </div>
+        </div>
+
+        <div class="mixer-step">
+          <h3>Step 3: Toggle Toppings</h3>
+          <div class="mixer-options">
+            <div class="mixer-opt" data-topping="almond">Almonds</div>
+            <div class="mixer-opt" data-topping="cookie">Cookie Crumbs</div>
+          </div>
+        </div>
+
+        <div class="mixer-cta-row">
+          <button class="btn-mixer-drizzle" id="mixerDrizzleBtn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M5 9l7 7 7-7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Drizzle &amp; Serve Scoop!
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reverse wave transition into featured products -->
+  <div class="honey-wave" style="transform:scaleY(-1);">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+      <path d="M0,0 H1440 V14 C1410,14 1395,52 1365,52 C1335,52 1328,16 1298,16 C1268,16 1260,50 1230,50 C1200,50 1194,12 1164,12 C1134,12 1126,46 1096,46 C1066,46 1060,10 1030,10 C1000,10 992,44 962,44 C932,44 926,8 896,8 C866,8 858,42 828,42 C798,42 792,6 762,6 C732,6 724,40 694,40 C664,40 658,4 628,4 C598,4 590,38 560,38 C530,38 524,2 494,2 C464,2 456,36 426,36 C396,36 390,0 360,0 C330,0 322,34 292,34 C262,34 256,-2 226,-2 C196,-2 188,32 158,32 C128,32 122,-4 92,-4 C62,-4 54,30 0,14 Z"
+      fill="var(--pollen)"/>
+    </svg>
+  </div>
+
+  <!-- ======= FEATURED PRODUCTS SECTION ======= -->
+  <section class="products-catalog home-products" style="padding-bottom:100px;">
+    <div class="section-head reveal">
+      <span class="eyebrow">Featured Menu</span>
+      <h2>Our Signature Parlor Lines</h2>
+      <p>A quick glimpse at some of our award-winning creations. Open our full catalog to browse all eighteen product lines and search flavors!</p>
+    </div>
+
+    <!-- Featured product cards -->
+    <div class="catalog-grid reveal-stagger" style="margin-bottom:50px;">
+      <!-- Cone -->
+      <div class="product-card pc-glow-1">
+        <div class="pc-media">
+          <img src="img_cones.png" alt="Mithas Big Cone" loading="lazy">
+          <div class="pc-drip"></div>
+        </div>
+        <span class="pc-tag">Cones</span>
+        <div class="pc-body">
+          <h3>Big Cone (100ml)</h3>
+          <p>Crispy waffle cone packed with real dairy cream. Available in eleven delicious flavors including Kesar Pista, Rajbhog, and Anjeer Badam.</p>
+          <div class="pc-foot">
+            <span class="pc-flavour">11 Flavours</span>
+            <span class="pc-arrow"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Traditional Kulfi -->
+      <div class="product-card pc-glow-2">
+        <div class="pc-media">
+          <img src="img_kulfi.png" alt="Mithas Stick Kulfi" loading="lazy">
+          <div class="pc-drip"></div>
+        </div>
+        <span class="pc-tag">Signature Kulfi</span>
+        <div class="pc-body">
+          <h3>Stick Kulfi (50ml)</h3>
+          <p>Mithas signature product line. Prepared using slow-boiled condensed milk, badam flakes, and natural aromatics.</p>
+          <div class="pc-foot">
+            <span class="pc-flavour">Kaju, Malai, Badam, Rose</span>
+            <span class="pc-arrow"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Brownie Ice Cream Cake -->
+      <div class="product-card pc-glow-3">
+        <div class="pc-media">
+          <img src="img_cake.png" alt="Mithas Brownie Cake" loading="lazy">
+          <div class="pc-drip"></div>
+        </div>
+        <span class="pc-tag">Cakes</span>
+        <div class="pc-body">
+          <h3>Brownie Ice Cream Cake</h3>
+          <p>Decadent layers of fudgy chocolate brownie sandwiching premium vanilla bean ice cream. Drizzled with choco flakes.</p>
+          <div class="pc-foot">
+            <span class="pc-flavour">Choco Fudge &amp; Cream</span>
+            <span class="pc-arrow"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Button to go to menu.html -->
+    <div style="text-align: center;" class="reveal">
+      <a href="menu.html" class="btn-primary" style="padding: 16px 44px;">
+        Open Full Interactive Menu
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ======= WHY US ======= -->
+  <section id="why" class="why-section">
+    <div class="section-head reveal">
+      <span class="eyebrow">Why Mithas</span>
+      <h2>What Makes The Cream Different</h2>
+    </div>
+    <div class="why-grid reveal-stagger">
+      <div class="why-card why-accent-red">
+        <div class="why-icon"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4.5L6 21l1.5-7.5L2 9h7z" fill="#fff"/></svg></div>
+        <h3>ISO 9001:2008 Certified</h3>
+        <p>Every single batch follows a documented, audited quality check process — not just a stamp on the label.</p>
+      </div>
+      <div class="why-card why-accent-blue">
+        <div class="why-icon"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M5 9l7-6 7 6v9a2 2 0 01-2 2H7a2 2 0 01-2-2z" stroke="#fff" stroke-width="2" fill="none" stroke-linejoin="round"/></svg></div>
+        <h3>Local Dairy Sourcing</h3>
+        <p>Dairy arrives fresh daily from nearby farms in Chennai, keeping the supply chain short and milk taste honest.</p>
+      </div>
+      <div class="why-card why-accent-green">
+        <div class="why-icon"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z" fill="#fff"/></svg></div>
+        <h3>18 Product Lines</h3>
+        <p>From mini 50ml cones to party tubs and bulk catering packs, the range supports all scales of sweet cravings.</p>
+      </div>
+      <div class="why-card why-accent-sky">
+        <div class="why-icon"><svg width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="#fff" stroke-width="2" fill="none"/><path d="M12 7v5l4 2" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <h3>Zero Added Fillers</h3>
+        <p>We scale up production volumes without diluting core dairy ingredients — consistency remains our promise.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= GALLERY SECTION ======= -->
+  <section class="gallery home-gallery" id="gallery">
+    <div class="section-head reveal">
+      <span class="eyebrow">The Gallery</span>
+      <h2>A Closer Look At Every Scoop</h2>
+      <p>Take it all in — the splashes, the swirls, the slow, sweet melt of dairy goodness.</p>
+    </div>
+
+    <!-- Infinite horizontal sliding row (Left direction) -->
+    <div class="marquee-row left">
+      <div class="g-item"><img src="img_sundae.png" alt="Strawberry sundae" loading="lazy"><span class="g-label">Strawberry Sundae</span></div>
+      <div class="g-item"><img src="img_popsicle.png" alt="Fruit popsicles" loading="lazy"><span class="g-label">Fruit Popsicles</span></div>
+      <div class="g-item"><img src="img_choco_cone.png" alt="Chocolate cone" loading="lazy"><span class="g-label">Choco Cone</span></div>
+      <div class="g-item"><img src="img_matka_kulfi.png" alt="Matka Kulfi" loading="lazy"><span class="g-label">Matka Kulfi</span></div>
+    </div>
+
+    <!-- Infinite horizontal sliding row (Right direction) -->
+    <div class="marquee-row right">
+      <div class="g-item"><img src="img_butterscotch.png" alt="Butterscotch cup" loading="lazy"><span class="g-label">Butterscotch Cup</span></div>
+      <div class="g-item"><img src="img_tub.png" alt="Family Tub" loading="lazy"><span class="g-label">Family Tub</span></div>
+      <div class="g-item"><img src="img_chocobar.png" alt="Chocobar" loading="lazy"><span class="g-label">Premium Chocobar</span></div>
+      <div class="g-item"><img src="img_mango_scoop.png" alt="Mango scoop" loading="lazy"><span class="g-label">Mango Scoop</span></div>
+    </div>
+  </section>
+
+  <!-- ======= CTA SECTION ======= -->
+  <section class="cta-section home-cta">
+    <div class="cta-strip reveal">
+      <h2>Hot Day? Cold Mithas.</h2>
+      <p>Find your nearest parlor stockist or get in touch for bulk catering orders, corporate party packs, and wholesale distributorships.</p>
+      <a href="contact.html" class="btn-light">
+        Get In Touch
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ======= FOOTER & CONTACT SECTION ======= -->
+  <footer id="contact">
+    <div class="footer-grid">
+      <!-- About info column -->
+      <div>
+        <div class="footer-logo">
+          <svg width="38" height="38" viewBox="0 0 42 42">
+            <polygon points="21,2 39,11.5 39,30.5 21,40 3,30.5 3,11.5" fill="url(#hex-grad)" opacity="0.95"/>
+            <text x="21" y="27" text-anchor="middle" font-family="Playfair Display, serif" font-size="13" font-weight="700" fill="#FEF3D0">M</text>
+          </svg>
+          Mithas
+        </div>
+        <p class="desc">A certified manufacturer of premium ice cream, stick kulfi, and matka kulfi — made under ISO audits with hygienic local dairy in Tamil Nadu.</p>
+        
+        <div class="social-row">
+          <a href="#" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M14 9h3V6h-3c-2 0-3.5 1.5-3.5 3.5V12H8v3h2.5v6h3v-6H16l.5-3h-3V9.8c0-.5.2-.8.5-.8z" fill="rgba(249,228,170,0.8)"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" stroke="rgba(249,228,170,0.8)" stroke-width="1.6" fill="none"/><circle cx="12" cy="12" r="4" stroke="rgba(249,228,170,0.8)" stroke-width="1.6" fill="none"/><circle cx="17.2" cy="6.8" r="1.1" fill="rgba(249,228,170,0.8)"/></svg></a>
+          <a href="#" aria-label="WhatsApp"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 3a9 9 0 00-7.7 13.6L3 21l4.6-1.2A9 9 0 1012 3z" stroke="rgba(249,228,170,0.8)" stroke-width="1.6" fill="none"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Menu links -->
+      <div>
+        <h4>Menu Lines</h4>
+        <ul>
+          <li><a href="menu.html?cat=cones">Big Waffle Cone</a></li>
+          <li><a href="menu.html?cat=kulfi">Matka Pot Kulfi</a></li>
+          <li><a href="menu.html?cat=tubs">Family Tubs</a></li>
+          <li><a href="menu.html?cat=bars">Candy Sticks</a></li>
+          <li><a href="menu.html?cat=cakes">Brownie Ice Cream Cake</a></li>
+        </ul>
+      </div>
+
+      <!-- Company links -->
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="contact.html#about">Our Story</a></li>
+          <li><a href="#gallery">Parlor Gallery</a></li>
+          <li><a href="#mixer">Flavour Mixer</a></li>
+          <li><a href="contact.html#forms">Distributorships</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+      <!-- Verified contact info column -->
+      <div>
+        <h4>Reach Us</h4>
+        <ul class="footer-contact">
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:2px;"><path d="M12 21s7-7.4 7-12a7 7 0 10-14 0c0 4.6 7 12 7 12z" stroke="var(--honey)" stroke-width="1.6" fill="none"/><circle cx="12" cy="9" r="2.4" stroke="var(--honey)" stroke-width="1.6" fill="none"/></svg>
+            <span>
+              <strong>Manufactured by:</strong><br>
+              SRI SAKTHI DAIRY FOODS<br>
+              No. 13/1, N.S.R. Street, Vellavedu,<br>
+              Chennai - 600 124, Tamil Nadu, India
+            </span>
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:2px;"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.8 19.8 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.69 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.33 1.85.56 2.81.69A2 2 0 0122 16.92z" stroke="var(--honey)" stroke-width="1.6" fill="none"/></svg>
+            +91-89256 22701
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" style="flex-shrink:0;margin-top:2px;"><path d="M4 4h16v16H4z" stroke="var(--honey)" stroke-width="1.6" fill="none"/><path d="M4 5l8 7 8-7" stroke="var(--honey)" stroke-width="1.6" fill="none"/></svg>
+            info@mithas.net.in
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom licensing and copyrights -->
+    <div class="footer-bottom">
+      <p>© 2026 Mithas. All Rights Reserved. &middot; FSSAI Lic. No. 12416023000184</p>
+      <div class="legal">
+        <a href="#">Terms of Service</a>
+        <a href="#">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast notification container -->
+  <div class="mixer-toast" id="creationToast">
+    <strong style="color: var(--honey-light); display: block; margin-bottom: 4px;">Scoop Complete!</strong>
+    <span class="toast-msg">Custom scoop serving ready.</span>
+  </div>
+
+  <!-- Back to top button -->
+  <div class="to-top" id="toTop">
+    <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7" stroke="#FEF3D0" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+
+  <!-- External JS Script Link -->
+  <script src="script.js"></script>
+</body>
+</html>
